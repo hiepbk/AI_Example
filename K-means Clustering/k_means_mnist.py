@@ -9,7 +9,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import normalize
 from display_network import *
 #%%
-mndata = MNIST('mnist_datasets')
+mndata = MNIST('mnist_datasets/')
 mndata.load_testing()
 X = mndata.test_images
 X0 = np.array(X)[:1000,:]/256.0
