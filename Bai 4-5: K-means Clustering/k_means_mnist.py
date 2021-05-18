@@ -8,7 +8,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import normalize
 from display_network import *
 #%%
-mndata = MNIST('mnist_datasets/')
+mndata = MNIST('../MNIST/') # path to your MNIST folder 
 mndata.load_testing()
 X = mndata.test_images
 X0 = np.asarray(X)[:1000,:]/256.0
