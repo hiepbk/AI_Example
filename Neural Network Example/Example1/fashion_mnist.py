@@ -1,5 +1,7 @@
 #%% Import
 import tensorflow as tf
+from keras import Sequential, models
+from keras.layers import Dense, Flatten
 import numpy as np
 import matplotlib.pyplot as plt
 print(tf.__version__)
@@ -30,14 +32,15 @@ test_images = test_images / 255.0
 # plt.show()
 
 #%% Configuration
-model = tf.keras.Sequential([
-    tf.keras.layers.Flatten(input_shape=(28, 28)),
-    tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dense(10)
-])
+model = Sequential()
+model.add(Flatten(input_shape=(28,28)))
+model.add(Dense(128, activation='relu'))
+model.add(Dense(10))
+
 model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
+model.summary()
 model.fit(train_images, train_labels, epochs=10)
 
 #%% test loss,test_acc
